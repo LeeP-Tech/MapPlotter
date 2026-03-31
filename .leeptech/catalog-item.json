@@ -1,17 +1,17 @@
 {
   "type": "project",
   "title": "MapPlotter",
-  "description": "A Power Apps Code App that plots geographic data on an interactive Leaflet map, supporting points, area boundaries, and Dataverse integration with geocoding, write-back, and an API response cache. Features marker clustering, five basemaps, gazetteer search, layer visibility, and a built-in how-to guide.",
-  "status": "in-progress",
+  "description": "An interactive map plotter built with React, Leaflet, and TypeScript. Supports plotting points and area boundaries via manual input or geocoding, with marker clustering, five basemaps, gazetteer search, layer visibility, and an API response cache. Deployed as an Azure Static Web App.",
+  "status": "active",
   "tags": [
     "projects",
     "github",
-    "power-apps",
+    "azure",
+    "static-web-apps",
     "maps",
     "leaflet",
     "react",
     "typescript",
-    "dataverse",
     "geocoding",
     "caching"
   ],

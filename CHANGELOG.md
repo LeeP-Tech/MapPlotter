@@ -7,6 +7,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.2.0] — 2026-03-31
+
+### Changed
+
+- Migrated deployment target from Power Apps Code Apps to **Azure Static Web Apps** — tiles and external API calls now work without CSP restrictions
+- Removed **Dataverse integration** tab and all associated code (`dataverse.ts`, `dataverse-panel.tsx`, `dataverse-config-store.ts`)
+- Removed `@microsoft/power-apps` SDK and `@microsoft/power-apps-vite` build plugin (85 packages removed)
+- Updated help dialog from four tabs to three (Overview, Data types, Tips & limits)
+- Updated catalog metadata — status now `active`, removed `power-apps`/`dataverse` tags, added `azure`/`static-web-apps`
+
+### Added
+
+- `staticwebapp.config.json` — SPA routing fallback for Azure Static Web Apps
+- `.github/workflows/azure-swa.yml` — automated deployment workflow; deploys on push to `main`, creates preview environments for PRs
+
+---
+
 ## [1.1.0] — 2026-03-31
 
 ### Added

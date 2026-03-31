@@ -69,7 +69,6 @@ Key packages to watch for major version releases:
 | `react-router-dom` | Significant API changes between major versions |
 | `zustand` | Generally stable; check migration notes |
 | `tailwindcss` | Config format and utility names can change across majors |
-| `@microsoft/power-apps` | Monitor [Power Apps release notes](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/release-notes); SDK API may change |
 
 ### Upgrading all packages to their absolute latest (advanced)
 

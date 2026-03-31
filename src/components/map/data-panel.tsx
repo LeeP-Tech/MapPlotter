@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Trash2, MapPin, Square, Plus, Loader2, Database, Eye, EyeOff } from 'lucide-react';
+import { Trash2, MapPin, Square, Plus, Loader2, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,13 +12,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { useMapStore } from '@/stores/map-store';
 import { geocodeAddress, fetchBoundary, parsePolygonCoords } from '@/lib/geocoding';
 import { ITEM_COLORS } from '@/types/map-types';
 import type { MapItem } from '@/types/map-types';
-import { DataversePanel } from './dataverse-panel';
 import { HelpDialog } from './help-dialog';
 
 type MainType = 'point' | 'area';
@@ -149,22 +147,9 @@ export function DataPanel() {
 
       <Separator />
 
-      {/* ── Tabs: Manual entry | Dataverse ──────────────────────────────── */}
-      <Tabs defaultValue="manual" className="flex flex-col gap-3">
-        <TabsList className="w-full grid grid-cols-2">
-          <TabsTrigger value="manual" className="text-xs">
-            <MapPin className="w-3 h-3 mr-1.5" />
-            Manual
-          </TabsTrigger>
-          <TabsTrigger value="dataverse" className="text-xs">
-            <Database className="w-3 h-3 mr-1.5" />
-            Dataverse
-          </TabsTrigger>
-        </TabsList>
-
-        {/* ── Manual tab ──────────────────────────────────────────────────── */}
-        <TabsContent value="manual" className="mt-0">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      {/* ── Manual entry ─────────────────────────────────────────────────── */}
+      <div className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         {/* Type toggle */}
         <div className="flex gap-2">
           <Button
@@ -341,13 +326,7 @@ export function DataPanel() {
           {loading ? 'Adding…' : 'Add to Map'}
         </Button>
       </form>
-        </TabsContent>
-
-        {/* ── Dataverse tab ────────────────────────────────────────────────── */}
-        <TabsContent value="dataverse" className="mt-0">
-          <DataversePanel />
-        </TabsContent>
-      </Tabs>
+        </div>
 
       {/* ── Items list ─────────────────────────────────────────────────────── */}
       {items.length > 0 && (

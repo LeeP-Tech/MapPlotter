@@ -1,25 +1,24 @@
 # MapPlotter
 
 [![CI](https://github.com/LeeP-Tech/MapPlotter/actions/workflows/ci.yml/badge.svg)](https://github.com/LeeP-Tech/MapPlotter/actions/workflows/ci.yml)
+[![Deploy](https://github.com/LeeP-Tech/MapPlotter/actions/workflows/azure-swa.yml/badge.svg)](https://github.com/LeeP-Tech/MapPlotter/actions/workflows/azure-swa.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Changelog](https://img.shields.io/badge/changelog-1.1.0-informational)](CHANGELOG.md)
+[![Changelog](https://img.shields.io/badge/changelog-1.2.0-informational)](CHANGELOG.md)
 
-A **Power Apps Code App** that plots geographic data on an interactive map. Add points and areas from coordinates, addresses, postcodes, or load them directly from a **Dataverse** table. Built with React, TypeScript, and Leaflet.
+An **interactive map plotter** that plots geographic data on a zoomable map. Add points and areas from coordinates, addresses, or postcodes. Built with React, TypeScript, and Leaflet. Deployed as an **Azure Static Web App**.
 
 ---
 
 ## Features
 
 - **Multiple data types** — points (coordinates or geocoded addresses) and areas (postcode/city boundaries, custom polygons)
-- **Dataverse integration** — connect a Dataverse table in four modes: raw coordinates, address geocoding, postcode points, and postcode area boundaries
-- **Geocode write-back** — optionally resolve and persist lat/lng coordinates back to Dataverse
 - **Smart UK postcode handling** — full postcodes and outward codes resolve via postcodes.io (no rate limit, no bounding-box rectangles)
 - **Marker clustering** — overlapping points bundle into numbered circles at lower zoom levels
 - **Five basemaps** — Streets (OSM), Satellite (Esri), Light (CartoDB), Dark (CartoDB), Terrain (Stadia/Stamen)
 - **Gazetteer search** — fly to any place by name using a floating search bar
 - **Layer visibility** — show/hide individual items from the sidebar
 - **Dark / light theme** — respects OS preference, togglable in the UI
-- **How-to guide** — built-in help dialog covering all data modes
+- **How-to guide** — built-in help dialog covering all data entry modes
 - **API response cache** — Nominatim and postcodes.io responses are cached in browser local storage (24 h and 7 days respectively), with a built-in cache manager to inspect, delete, and clear entries
 
 ---
@@ -38,7 +37,7 @@ npm install
 npm run dev
 ```
 
-The app runs at `http://localhost:5173` with hot-module reload. Outside of Power Apps the Dataverse tab is disabled; all manual entry and map features work in any browser.
+The app runs at `http://localhost:5173` with hot-module reload.
 
 ### Build
 
@@ -56,12 +55,18 @@ npm run lint
 
 ---
 
-## Power Apps deployment
+## Deployment
 
-1. Build the app: `npm run build`
-2. Publish the `dist/` folder as a **Power Apps Code Component** using the [Power Apps CLI](https://learn.microsoft.com/en-us/power-apps/developer/component-framework/get-powerapps-cli)
+The app is deployed automatically to **Azure Static Web Apps** on every push to `main` via the GitHub Actions workflow in `.github/workflows/azure-swa.yml`.
 
-The app detects when it is running inside the Power Apps host via `window.__powerAppsBridge` and enables live Dataverse connectivity through the `@microsoft/power-apps` SDK. When run in a plain browser this bridge is absent and the Dataverse tab shows a prompt to open the app inside Power Apps.
+To set up your own deployment:
+
+1. Create an Azure Static Web App resource in the [Azure Portal](https://portal.azure.com):
+   - Connect to your fork of this repository, branch `main`
+   - Build preset: **Custom**; app location: `/`; output location: `dist`; api location: *(leave blank)*
+2. Copy the deployment token from the SWA resource → **Deployment → Manage deployment token**
+3. Add it to your GitHub repo: **Settings → Secrets and variables → Actions → New secret** → name: `MapPlotterApiToken`
+4. Push to `main` — the workflow builds and deploys automatically.
 
 ---
 
@@ -77,7 +82,7 @@ The app detects when it is running inside the Power Apps host via `window.__powe
 | Icons | Lucide React |
 | Data fetching | TanStack Query 5 |
 | Routing | React Router 7 |
-| Power Apps SDK | @microsoft/power-apps |
+| Hosting | Azure Static Web Apps |
 
 ---
 

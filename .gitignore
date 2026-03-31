@@ -25,3 +25,6 @@ dist-ssr
 
 # Claude Code
 .claude/settings.local.json
+
+# Power Platform local config (contains environment-specific IDs)
+power.config.json

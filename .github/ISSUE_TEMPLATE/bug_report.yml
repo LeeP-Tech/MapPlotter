@@ -40,8 +40,8 @@ body:
     attributes:
       label: Environment
       options:
-        - Running inside Power Apps
-        - Running in a plain browser (localhost / preview)
+        - Deployed (azurestaticapps.net)
+        - Running locally (localhost / npm run dev)
     validations:
       required: true
 
