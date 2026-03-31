@@ -1,6 +1,12 @@
 {
+  "routes": [
+    {
+      "route": "/mapplotter",
+      "redirect": "/mapplotter/"
+    }
+  ],
   "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/*.svg", "/*.png", "/*.ico"]
+    "rewrite": "/mapplotter/index.html",
+    "exclude": ["/mapplotter/assets/*", "/*.svg", "/*.png", "/*.ico"]
   }
 }
