@@ -16,7 +16,7 @@ Older versions do not receive security fixes. Please update to the latest releas
 
 To report a vulnerability privately, use one of the following options:
 
-- **GitHub private advisory** — open a [Security Advisory](../../security/advisories/new) on this repository (recommended)
+- **GitHub private advisory** — open a [Security Advisory](https://github.com/LeeP-Tech/MapPlotter/security/advisories/new) on this repository (recommended)
 - **Email** — contact Lee Pasifull directly. If you cannot find contact details, use the GitHub advisory route above.
 
 Please include:

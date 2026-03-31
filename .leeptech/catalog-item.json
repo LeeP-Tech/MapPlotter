@@ -1,0 +1,24 @@
+{
+  "type": "project",
+  "title": "MapPlotter",
+  "description": "A Power Apps Code App that plots geographic data on an interactive Leaflet map, supporting points, area boundaries, and Dataverse integration with geocoding, write-back, and an API response cache. Features marker clustering, five basemaps, gazetteer search, layer visibility, and a built-in how-to guide.",
+  "status": "in-progress",
+  "tags": [
+    "projects",
+    "github",
+    "power-apps",
+    "maps",
+    "leaflet",
+    "react",
+    "typescript",
+    "dataverse",
+    "geocoding",
+    "caching"
+  ],
+  "href": "https://github.com/LeeP-Tech/MapPlotter",
+  "external": true,
+  "links": [
+    { "label": "GitHub", "href": "https://github.com/LeeP-Tech/MapPlotter" }
+  ],
+  "order": 10
+}

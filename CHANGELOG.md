@@ -7,6 +7,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.0] — 2026-03-31
+
+### Added
+
+- **API response cache** — all Nominatim and postcodes.io responses are now cached in browser `localStorage`. Nominatim results (address geocoding, boundary lookups, gazetteer search) are cached for 24 hours; postcodes.io results for 7 days. Cache misses still respect the Nominatim 1 req/sec rate limit.
+- **Cache manager dialog** — a new "Cache" button in the map toolbar opens a dialog showing entry count, storage size, and session hit count. Individual entries can be inspected (label, age, TTL remaining, hit count) and deleted. A "Clear all" action purges the entire cache.
+- Zoom controls moved to bottom-left to avoid overlapping the gazetteer search bar.
+
+---
+
 ## [1.0.0] — 2026-03-31
 
 Initial public release.

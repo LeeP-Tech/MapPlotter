@@ -1,8 +1,8 @@
 # MapPlotter
 
-[![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
+[![CI](https://github.com/LeeP-Tech/MapPlotter/actions/workflows/ci.yml/badge.svg)](https://github.com/LeeP-Tech/MapPlotter/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Changelog](https://img.shields.io/badge/changelog-1.0.0-informational)](CHANGELOG.md)
+[![Changelog](https://img.shields.io/badge/changelog-1.1.0-informational)](CHANGELOG.md)
 
 A **Power Apps Code App** that plots geographic data on an interactive map. Add points and areas from coordinates, addresses, postcodes, or load them directly from a **Dataverse** table. Built with React, TypeScript, and Leaflet.
 
@@ -20,6 +20,7 @@ A **Power Apps Code App** that plots geographic data on an interactive map. Add 
 - **Layer visibility** — show/hide individual items from the sidebar
 - **Dark / light theme** — respects OS preference, togglable in the UI
 - **How-to guide** — built-in help dialog covering all data modes
+- **API response cache** — Nominatim and postcodes.io responses are cached in browser local storage (24 h and 7 days respectively), with a built-in cache manager to inspect, delete, and clear entries
 
 ---
 
@@ -86,8 +87,8 @@ The following external services are called at runtime. Review their terms before
 
 | Service | Purpose | Terms / Notes |
 |---|---|---|
-| [Nominatim](https://nominatim.openstreetmap.org) (OpenStreetMap) | Address geocoding; area boundary polygons | [Usage Policy](https://operations.osmfoundation.org/policies/nominatim/) — max 1 req/sec; no bulk/automated use without your own instance |
-| [postcodes.io](https://postcodes.io) | UK postcode geocoding | [MIT-licensed open API](https://github.com/ideal-postcodes/postcodes.io) — no rate limit |
+| [Nominatim](https://nominatim.openstreetmap.org) (OpenStreetMap) | Address geocoding; area boundary polygons; gazetteer search | [Usage Policy](https://operations.osmfoundation.org/policies/nominatim/) — max 1 req/sec; responses cached 24 h; no bulk/automated use without your own instance |
+| [postcodes.io](https://postcodes.io) | UK postcode geocoding | [MIT-licensed open API](https://github.com/ideal-postcodes/postcodes.io) — no rate limit; responses cached 7 days |
 | [Esri World Imagery](https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9) | Satellite basemap tiles | [Esri Master License Agreement](https://www.esri.com/en-us/legal/terms/full-master-agreement) |
 | [CartoDB Basemaps](https://carto.com/basemaps/) | Light and Dark basemap tiles | [CARTO Terms of Service](https://carto.com/legal/) |
 | [Stadia Maps / Stamen Terrain](https://stadiamaps.com/stamen/) | Terrain basemap tiles | [Stadia Maps Terms](https://stadiamaps.com/terms-of-service/); tiles © [Stamen Design](http://stamen.com) (CC BY 3.0), data © OpenStreetMap contributors |
@@ -128,7 +129,7 @@ This project depends on the following open-source packages. Full license texts a
 
 ## Known limitations
 
-- **Nominatim rate limit** — address geocoding and boundary lookups are throttled to 1 request per second to comply with the [Nominatim Usage Policy](https://operations.osmfoundation.org/policies/nominatim/). Loading large datasets from Dataverse (e.g. hundreds of addresses) will therefore take time. For high-volume production use, consider running your own Nominatim instance.
+- **Nominatim rate limit** — address geocoding and boundary lookups are throttled to 1 request per second to comply with the [Nominatim Usage Policy](https://operations.osmfoundation.org/policies/nominatim/). Responses are cached in local storage for 24 hours so repeated queries are instant and API-free. Loading large datasets from Dataverse (e.g. hundreds of addresses not yet cached) will still take time. For high-volume production use, consider running your own Nominatim instance.
 - **Dataverse requires the Power Apps host** — the Dataverse tab is only functional when the app is deployed inside a Power Apps environment. In a plain browser the tab displays a prompt explaining this.
 - **Tile provider terms** — the Esri Satellite basemap is subject to the [Esri Master License Agreement](https://www.esri.com/en-us/legal/terms/full-master-agreement). Review usage allowances before deploying commercially. CartoDB and Stadia are free within their standard usage tiers.
 - **UK postcodes only for postcodes.io** — the smart postcode handling applies to UK postcodes only. Non-UK postal codes fall back to Nominatim.

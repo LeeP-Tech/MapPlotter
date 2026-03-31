@@ -20,8 +20,8 @@ This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.
 ### Set up locally
 
 ```bash
-git clone https://github.com/leepasifull/mapplotter.git
-cd mapplotter
+git clone https://github.com/LeeP-Tech/MapPlotter.git
+cd MapPlotter
 npm install
 npm run dev
 ```
@@ -95,4 +95,4 @@ Changes that call Nominatim must respect the 1 req/sec rate limit enforced in `n
 
 ## Questions?
 
-Open a [GitHub Discussion](../../discussions) or file an issue with the `question` label.
+Open a [GitHub Discussion](https://github.com/LeeP-Tech/MapPlotter/discussions) or file an issue with the `question` label.
