@@ -13,5 +13,5 @@ export const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: '/mapplotter',
+  basename: '/',
 })
