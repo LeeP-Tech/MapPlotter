@@ -18,7 +18,8 @@
   "href": "https://github.com/LeeP-Tech/MapPlotter",
   "external": true,
   "links": [
-    { "label": "GitHub", "href": "https://github.com/LeeP-Tech/MapPlotter" }
+    { "label": "GitHub", "href": "https://github.com/LeeP-Tech/MapPlotter" },
+    { "label": "Live", "href": "https://mapplotter.pasifull.co.uk" }
   ],
   "order": 10
 }
